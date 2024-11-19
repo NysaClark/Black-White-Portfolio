@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amethysta&family=Cabin:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        
+        font-family: "Cabin", Arial, Helvetica, sans-serif;
+      }
+
+      .black-bg {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to bottom right,
+          black 0%,
+          black 50%,
+          #fff 50%,
+          #fff 100%
+        );
+      }
+
+      /* .black-bg {
+        background: linear-gradient(
+          to bottom right,
+          black 0%,
+          black 50%,
+          #fff 50%,
+          #fff 100%
+        );
+      } */
+
+      .content {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+
+        position: absolute;
+        top: 0;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #header {
+        display: flex;
+        justify-content: space-around;
+        width: 100%;
+      }
+
+      #btnMsg {
+        font-size: 2rem;
+        padding: 1rem;
+
+        position: absolute;
+        bottom: 0;
+        right: 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        opacity: 0;
+        animation: fade-in 0.5s linear forwards;
+      }
+
+      #header #btnMsg {
+        color: black;
+        animation-delay: 2.2s;
+      }
+
+      #btnMsg svg {
+        width: 1.8rem;
+        height: 1.8rem;
+        border-radius: 10px;
+        padding: 0 1rem;
+        cursor: pointer;
+      }
+
+      svg.black {
+        border: 2px solid black;
+        box-shadow: 0 8px 0px black;
+      }
+
+      svg.white {
+        border: 2px solid white;
+        box-shadow: 0 8px 0px white;
+      }
+
+      #btnMsg svg:hover {
+        box-shadow: none;
+        transform: translateY(8px);
+        transform: all linear 0.8s;
+      }
+
+      svg.disabled,
+      #btnMsg svg.disabled:hover {
+        color: rgb(80, 80, 80);
+        border: 2px solid rgb(80, 80, 80);
+        box-shadow: 0 8px 0px rgb(80, 80, 80);
+        transform: none;
+        cursor: default;
+      }
+
+      /* #btnMsg svg.black.disabled:hover {
+        box-shadow: none;
+        transform: translateY(8px);
+        transform: all linear 0.8s;
+      } */
+
+      #header h1 {
+        font-size: 7.5rem;
+        font-family: "Amethysta", Arial, Helvetica, sans-serif;
+      }
+
+      #header #fname {
+        color: white;
+        margin: 10px;
+        position: relative;
+        overflow: hidden;
+        width: 50vw;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
+      #fname h1 {
+        position: absolute;
+        left: -100vw;
+        width: 50vw;
+        animation: left-slide 1s forwards;
+        animation-delay: 0.2s;
+      }
+
+      #header #lname {
+        margin: 10px;
+
+        position: relative;
+        overflow: hidden;
+        width: 50vw;
+        text-align: center;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+      }
+
+      #lname h1 {
+        position: absolute;
+        right: -100vw;
+        width: 50vw;
+        animation: right-slide 1s forwards;
+        animation-delay: 1.2s;
+      }
+
+      @keyframes left-slide {
+        100% {
+          left: 0;
+        }
+      }
+
+      @keyframes right-slide {
+        100% {
+          right: 0;
+        }
+      }
+
+      #aboutMe {
+        display: none;
+        width: 100%;
+        height: 100%;
+        color: white;
+      }
+
+      .fade-in {
+        animation: fade-in 0.5s linear;
+      }
+
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        #header h1 {
+          font-size: 6rem;
+        }
+      }
+
+      @media screen and (max-width: 630px) {
+        #header {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        #header h1 {
+          font-size: 4rem;
+        }
+
+        #header #fname {
+          align-self: start;
+        }
+
+        #header #lname {
+          align-self: end;
+        }
+
+        #header #fname,
+        #header #lname {
+          width: 100vw;
+          height: 10vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bg" class="black-bg"></div>
+    <div class="content">
+      <div id="header">
+        <div id="fname"><h1>Nysa</h1></div>
+        <div id="lname"><h1>Clark</h1></div>
+        <div id="btnMsg">
+          <p>Press</p>
+          <div class="btns">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-chevron-up black disabled"
+              viewBox="0 0 16 16"
+              id="aboutMeArrowUp"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-chevron-down black"
+              viewBox="0 0 16 16"
+              id="headerArrowDown"
+              aria-disabled="true"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div id="aboutMe" class="fade-in">
+        <h1>Hi I'm Nysa Clark</h1>
+
+        <img src="profile.png" alt="">
+
+        <div id="btnMsg">
+          <p>Press</p>
+          <div class="btns">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-chevron-up white"
+              viewBox="0 0 16 16"
+              id="aboutMeArrowUp"
+              onclick="handleArrowUp()"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-chevron-down white disabled"
+              viewBox="0 0 16 16"
+              id="aboutMeArrowDown"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const handleArrowDown = () => {
+      bg = document.getElementById("bg");
+      // bg.classList.replace("split-bg", "black-bg");
+      document.getElementById("header").style.display = "none";
+
+      bg.style.width = "100%";
+      bg.style.height = "100%";
+
+      var animation = setInterval(function () {
+        if (parseInt(bg.style.width) == 200) {
+          document.getElementById("aboutMe").style.display = "block";
+          clearInterval(animation);
+        }
+        bg.style.width = parseInt(bg.style.width) + 1 + "%";
+        bg.style.height = parseInt(bg.style.height) + 1 + "%";
+      }, 5);
+    };
+
+    const handleArrowUp = () => {
+      // console.log("HERE");
+      bg = document.getElementById("bg");
+      // bg.classList.replace("black-bg", "split-bg");
+      document.getElementById("aboutMe").style.display = "none";
+
+      bg.style.width = "200%";
+      bg.style.height = "200%";
+
+      var animation = setInterval(function () {
+        if (parseInt(bg.style.width) == 100) {
+          document.getElementById("header").style.display = "flex";
+          clearInterval(animation);
+        }
+        bg.style.width = parseInt(bg.style.width) - 1 + "%";
+        bg.style.height = parseInt(bg.style.height) - 1 + "%";
+      }, 5);
+    };
+
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        // wait 2.5 seconds before the down button can be pressed to move down
+        window.addEventListener("keydown", (event) => {
+          if (
+            event.key == "ArrowDown" &&
+            document.getElementById("header").style.display != "none"
+          ) {
+            handleArrowDown();
+          } else if (
+            event.key == "ArrowUp" &&
+            document.getElementById("aboutMe").style.display == "block"
+          ) {
+            handleArrowUp();
+          }
+        });
+      }, 2500);
+
+      document
+        .getElementById("headerArrowDown")
+        .addEventListener("click", handleArrowDown);
+
+      // window.addEventListener("keydown", (event) => {
+      //   if (
+      //     event.key == "ArrowUp" &&
+      //     document.getElementById("aboutMe").style.display == "block"
+      //   ) {
+      //     handleArrowUp();
+      //   }
+      // });
+    });
+  </script>
+</html>
