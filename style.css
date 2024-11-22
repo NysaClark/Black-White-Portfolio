@@ -149,26 +149,30 @@ svg.disabled,
   width: 100%;
   height: 100%;
   color: white;
-  padding-top: 4rem;
+  /* padding-top: 4rem; */
+
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
 }
 
 #aboutMe h1 {
   text-transform: uppercase;
-  position: absolute;
+  position: relative;
   font-size: 4rem;
-  margin: 3rem 3rem 0 3rem;
+  /* margin: 3rem 3rem 0 3rem; */
+  /* margin: 2rem 0 0; */
 
   animation: trail-in 2s forwards;
 }
 
 #aboutMe h1:before {
-  content: "HI, I'M NYSA CLARK";
+  content: "HI, I'M NYSA CLARK!";
 
   position: absolute;
+  top: 10px;
+  left: -20px;
   color: rgb(255, 255, 255);
-
-  top: 5px;
-  left: -10px;
   z-index: 0;
   filter: blur(3px);
   opacity: 1;
@@ -176,17 +180,33 @@ svg.disabled,
   animation: fade-out 2s forwards;
 }
 
-#aboutMe .desc{
-  opacity: 0;
+#aboutMe .left {
   max-width: 600px;
-  margin: 7rem 2rem 0 3rem;
-  animation: fade-in linear 2s forwards;
-  animation-delay: 1.2s;
 }
 
+#aboutMe .desc {
+  opacity: 0;
+  margin: 2rem 0 0;
+  animation: fade-in linear 2s forwards;
+  animation-delay: 1.5s;
+  font-size: 1.2rem;
+}
 
 #aboutMe #profilePic {
+  opacity: 0;
   border-radius: 50%;
+
+  
+  min-width: 200px;
+  width: 20vw;
+  height: auto;
+  animation: fade-in linear 2s forwards;
+  animation-delay: 1.5s;
+  /* animation: shake 0.25s infinite; */
+}
+
+#aboutMe #profilePic:hover {
+  animation: fade-in linear 2s forwards, shake 1.8s ease-in-out; 
 }
 
 @keyframes left-slide {
@@ -211,31 +231,84 @@ svg.disabled,
   0% {
     opacity: 0;
     transform: scale(0.4);
-    left: -20%;
-    top: 20%;
+    /* margin-bottom: -50%; */
+    margin-left: -50vw;
+    margin-bottom: -20vh;
   }
   100% {
     opacity: 1;
     transform: scale(1);
-    left: 0;
-    top: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    /* left: 0;
+    top: 0; */
   }
 }
 
 @keyframes fade-out {
   0% {
     opacity: 1;
-    /* opacity: 0;
-    transform: scale(0.4);
-    left: -20%;
-    top: 20%; */
   }
   100% {
     opacity: 0;
-    /* opacity: 1;
-    transform: scale(1);
-    left: 0;
-    top: 0; */
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(8deg) scale(1.1);
+  }
+  50% {
+    transform: rotate(0eg) scale(1.1);
+  }
+  75% {
+    transform: rotate(-8deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  #aboutMe {
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+
+  #aboutMe h1 {
+    text-align: center;
+    min-width: 300px;
+    width: 90vw;
+  }
+  #aboutMe .desc {
+    min-width: 300px;
+    width: 90vw;
+    text-align: center;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  @keyframes trail-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.4);
+
+      margin-left: -100vw;
+      margin-bottom: -20vh;
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      margin-bottom: 0;
+      margin-left: 0;
+    }
   }
 }
 

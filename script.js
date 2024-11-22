@@ -9,7 +9,7 @@ const handleArrowDown = () => {
   //! NOTE: animation is very slow on mobile for some reason
   var animation = setInterval(function () {
     if (parseInt(bg.style.width) == 200) {
-      document.getElementById("aboutMe").style.display = "block";
+      document.getElementById("aboutMe").style.display = "flex";
       clearInterval(animation);
     }
     bg.style.width = parseInt(bg.style.width) + 1 + "%";
@@ -48,7 +48,7 @@ window.addEventListener("load", () => {
         handleArrowDown();
       } else if (
         event.key == "ArrowUp" &&
-        document.getElementById("aboutMe").style.display == "block"
+        document.getElementById("aboutMe").style.display == "flex"
       ) {
         handleArrowUp();
       }
