@@ -164,6 +164,7 @@ svg.disabled,
   /* margin: 2rem 0 0; */
 
   animation: trail-in 2s forwards;
+  will-change: opacity, transform, margin-left, margin-bottom;
 }
 
 #aboutMe h1:before {
@@ -178,6 +179,7 @@ svg.disabled,
   opacity: 1;
 
   animation: fade-out 2s forwards;
+  will-change: opacity;
 }
 
 #aboutMe .left {
@@ -186,27 +188,93 @@ svg.disabled,
 
 #aboutMe .desc {
   opacity: 0;
-  margin: 2rem 0 0;
+  margin: 2rem 0 2rem;
   animation: fade-in linear 2s forwards;
   animation-delay: 1.5s;
   font-size: 1.2rem;
 }
 
-#aboutMe #profilePic {
-  opacity: 0;
-  border-radius: 50%;
+#aboutMe .socials {
+  display: flex;
+  align-items: center;
+  padding: 1rem 0 0;
+  gap: 1.5rem;
+}
 
-  
+.socials a.social-link {
+  text-decoration: none;
+  color: white;
+}
+
+.social-link svg {
+  width: 2rem;
+  height: 2rem;
+
+  transition: all .5s ease;
+}
+
+.social-link svg:hover{
+  transform: scale(1.1);
+}
+
+
+#aboutMe .contactBtns {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+
+  opacity: 0;
+  animation: fade-in linear 2s forwards;
+  animation-delay: 1.5s;
+}
+
+.contactBtns a {
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  transition: all 0.8s ease;
+  border: 2px solid white;
+}
+
+a#resume {
+  background-color: white;
+  color: black;
+}
+a#resume:hover {
+  background-color: black;
+  color: white;
+}
+
+a#contactMe {
+  background-color: black;
+  color: white;
+}
+a#contactMe:hover {
+  background-color: white;
+  color: black;
+}
+
+#aboutMe .right {
+  opacity: 0;
+  animation: fade-in linear 2s forwards;
+  animation-delay: 1.5s;
+}
+
+#aboutMe #profilePic {
+  border-radius: 50%;
   min-width: 200px;
   width: 20vw;
   height: auto;
-  animation: fade-in linear 2s forwards;
-  animation-delay: 1.5s;
-  /* animation: shake 0.25s infinite; */
+  /* transition: all .8s ease; */
+  /* transition: shake .8s ease; */
+
 }
 
 #aboutMe #profilePic:hover {
-  animation: fade-in linear 2s forwards, shake 1.8s ease-in-out; 
+  animation: 1s ease-out 0s 1 shake;
+  
 }
 
 @keyframes left-slide {
@@ -231,7 +299,6 @@ svg.disabled,
   0% {
     opacity: 0;
     transform: scale(0.4);
-    /* margin-bottom: -50%; */
     margin-left: -50vw;
     margin-bottom: -20vh;
   }
@@ -240,8 +307,6 @@ svg.disabled,
     transform: scale(1);
     margin-bottom: 0;
     margin-left: 0;
-    /* left: 0;
-    top: 0; */
   }
 }
 
@@ -289,6 +354,10 @@ svg.disabled,
     text-align: center;
   }
 
+  #aboutMe .socials {
+   justify-content: center;
+  }
+
   .left {
     display: flex;
     flex-direction: column;
@@ -316,6 +385,15 @@ svg.disabled,
   #header h1 {
     font-size: 6rem;
   }
+
+  #btnMsg p{
+    font-size: 1.5rem;
+  }
+
+  #btnMsg svg{
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 630px) {
@@ -340,5 +418,26 @@ svg.disabled,
   #header #lname {
     width: 100vw;
     height: 10vh;
+  }
+
+  #aboutMe{
+    justify-content: start;
+    margin-top: 5rem;
+  }
+
+  #aboutMe h1{
+    font-size: 2.5rem;
+  }
+
+  #aboutMe #profilePic{
+    min-width: 150px;
+  }
+
+  #aboutMe .desc{
+    font-size: 1.1rem;
+  }
+
+  .contactBtns a{
+    font-size: .8rem;
   }
 }
