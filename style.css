@@ -210,13 +210,12 @@ svg.disabled,
   width: 2rem;
   height: 2rem;
 
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
-.social-link svg:hover{
+.social-link svg:hover {
   transform: scale(1.1);
 }
-
 
 #aboutMe .contactBtns {
   display: flex;
@@ -267,15 +266,104 @@ a#contactMe:hover {
   min-width: 200px;
   width: 20vw;
   height: auto;
-  /* transition: all .8s ease; */
-  /* transition: shake .8s ease; */
-
 }
 
 #aboutMe #profilePic:hover {
   animation: 1s ease-out 0s 1 shake;
-  
 }
+
+#projects {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+}
+
+#projects #down {
+  margin: 1rem 0 2rem;
+  width: 20px;
+  height: 20px;
+  animation: bounce 2s infinite;
+}
+
+.mobile {
+  /* display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: relative; */
+
+  position: relative;
+  width: 500px;
+  height: 450px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 0;
+}
+
+.project-container {
+  /* position: absolute;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 5px;
+  border-width: 2px 5px 5px 2px;
+  border-color: black;
+  border-style: solid;
+  max-width: 65%; */
+
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  /* transform: translateX(110%) scale(0.9); */
+  /* opacity: 0.7; */
+}
+
+.project-container.current {
+  /* transform: translateX(0%);
+  opacity: 1; */
+}
+
+.project-container > div {
+  background: white;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border-width: 2px 8px 8px 2px;
+  border-color: black;
+  border-style: solid;
+}
+.project-container > div > img {
+  width: 100%;
+}
+.project-container > div > h3 {
+  font-size: 1.3rem;
+  padding: 0.3rem;
+}
+.project-container > div > p {
+  padding: 0.3rem;
+}
+.project-container > div > .project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.3rem;
+}
+.project-tags .tag {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.2rem .5rem;
+  border-radius: 5px;
+  border: 2px solid white;
+  font-size: .9rem;
+}
+
 
 @keyframes left-slide {
   100% {
@@ -337,6 +425,42 @@ a#contactMe:hover {
   }
 }
 
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-50%);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-25%);
+  }
+  40% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10%);
+  }
+  60% {
+    transform: translateY(0);
+  }
+  70% {
+    transform: translateY(0);
+  }
+  80% {
+    transform: translateY(0);
+  }
+  90% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
 @media screen and (max-width: 1023px) {
   #aboutMe {
     flex-direction: column-reverse;
@@ -355,7 +479,7 @@ a#contactMe:hover {
   }
 
   #aboutMe .socials {
-   justify-content: center;
+    justify-content: center;
   }
 
   .left {
@@ -386,11 +510,11 @@ a#contactMe:hover {
     font-size: 6rem;
   }
 
-  #btnMsg p{
+  #btnMsg p {
     font-size: 1.5rem;
   }
 
-  #btnMsg svg{
+  #btnMsg svg {
     width: 1.5rem;
     height: 1.5rem;
   }
@@ -420,24 +544,24 @@ a#contactMe:hover {
     height: 10vh;
   }
 
-  #aboutMe{
+  #aboutMe {
     justify-content: start;
     margin-top: 5rem;
   }
 
-  #aboutMe h1{
+  #aboutMe h1 {
     font-size: 2.5rem;
   }
 
-  #aboutMe #profilePic{
+  #aboutMe #profilePic {
     min-width: 150px;
   }
 
-  #aboutMe .desc{
+  #aboutMe .desc {
     font-size: 1.1rem;
   }
 
-  .contactBtns a{
-    font-size: .8rem;
+  .contactBtns a {
+    font-size: 0.8rem;
   }
 }

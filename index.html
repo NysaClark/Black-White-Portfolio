@@ -44,6 +44,7 @@
               viewBox="0 0 16 16"
               id="headerArrowDown"
               aria-disabled="true"
+              onclick="headerArrowDown()"
             >
               <path
                 fill-rule="evenodd"
@@ -53,7 +54,7 @@
           </div>
         </div>
       </div>
-      <!-- <div id="aboutMe" class="fade-in"> -->
+
       <div id="aboutMe">
         <div class="left">
           <h1>Hi, I'm Nysa Clark!</h1>
@@ -135,7 +136,7 @@
               class="bi bi-chevron-up white"
               viewBox="0 0 16 16"
               id="aboutMeArrowUp"
-              onclick="handleArrowUp()"
+              onclick="aboutArrowUp()"
             >
               <path
                 fill-rule="evenodd"
@@ -147,9 +148,102 @@
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-chevron-down white disabled"
+              class="bi bi-chevron-down white"
               viewBox="0 0 16 16"
               id="aboutMeArrowDown"
+              onclick="aboutArrowDown()"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div id="projects">
+        <h1>Some of my work!</h1>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-chevron-down"
+          viewBox="0 0 16 16"
+          id="down"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
+          />
+        </svg>
+
+        <div class="mobile">
+          <div data-el="1" class="project-container current">
+            <div data-el="1" id="project-1">
+              <img data-el="1" class="project-img" src="./images/typing-test.png" alt="" />
+              <h3 data-el="1" class="project-title">Project 1</h3>
+              <p data-el="1" class="project-desc">Project Description</p>
+              <div data-el="1" class="project-tags">
+                <div data-el="1" class="tag">HTML</div>
+                <div data-el="1" class="tag">CSS</div>
+                <div data-el="1" class="tag">JS</div>
+              </div>
+            </div>
+          </div>
+          <div data-el="2" class="project-container">
+            <div data-el="2" id="project-2">
+              <img data-el="2" class="project-img" src="./images/typing-test.png" alt="" />
+              <h3 data-el="2" class="project-title">Project 2</h3>
+              <p data-el="2" class="project-desc">Project Description</p>
+              <div data-el="2" class="project-tags">
+                <div data-el="2" class="tag">HTML</div>
+                <div data-el="2" class="tag">CSS</div>
+                <div data-el="2" class="tag">JS</div>
+              </div>
+            </div>
+          </div>
+          <div data-el="3" class="project-container">
+            <div data-el="3"  id="project-3">
+              <img data-el="3" class="project-img" src="./images/typing-test.png" alt="" />
+              <h3 data-el="3" class="project-title">Project 3</h3>
+              <p data-el="3" class="project-desc">Project Description</p>
+              <div data-el="3" class="project-tags">
+                <div data-el="3" class="tag">HTML</div>
+                <div data-el="3" class="tag">CSS</div>
+                <div data-el="3" class="tag">JS</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="btnMsg">
+          <p>Press</p>
+          <div class="btns">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-chevron-up black"
+              viewBox="0 0 16 16"
+              id="projectsArrowUp"
+              onclick="projectsArrowUp()"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z"
+              />
+            </svg>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-chevron-down black disabled"
+              viewBox="0 0 16 16"
+              id="projectsArrowDown"
             >
               <path
                 fill-rule="evenodd"
