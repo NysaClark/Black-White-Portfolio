@@ -304,15 +304,6 @@ a#contactMe:hover {
 }
 
 .project-container {
-  /* position: absolute;
-  padding: 1rem;
-  background-color: #fff;
-  border-radius: 5px;
-  border-width: 2px 5px 5px 2px;
-  border-color: black;
-  border-style: solid;
-  max-width: 65%; */
-
   height: 100%;
   position: absolute;
   width: 100%;
@@ -320,13 +311,7 @@ a#contactMe:hover {
   display: flex;
   flex-direction: column;
 
-  /* transform: translateX(110%) scale(0.9); */
-  /* opacity: 0.7; */
-}
-
-.project-container.current {
-  /* transform: translateX(0%);
-  opacity: 1; */
+  transition: all .4s ease-in-out;
 }
 
 .project-container > div {

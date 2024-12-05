@@ -95,11 +95,7 @@ window.addEventListener("load", () => {
 let projects = document.querySelectorAll(".project-container");
 
 const handleProjectClick = (id) => {
-  document.getElementById("current").removeAttribute("id");
-  console.log(id);
-  // console.log(currProject);
-
-  for (let i = 1; i < 4; i++) {
+  for (let i = 1; i < 7; i++) {
     let pj = document.getElementById(`project-${i}`).parentElement;
     if (i < id) {
       pj.style.transform = `translateX(-${(id - i) * 100 + 10}%) scale(.9)`;
@@ -117,10 +113,9 @@ const handleProjectClick = (id) => {
 
 projects.forEach((project) => {
   let projectID = Number(project.getAttribute("data-el"));
-  // console.log(projectID);
+
   switch (projectID) {
     case 1:
-      project.setAttribute("id", "current");
       project.style.transform = "translateX(0%) scale(1)";
       project.style.opacity = "1";
       break;
@@ -132,10 +127,21 @@ projects.forEach((project) => {
       project.style.transform = "translateX(210%) scale(.9)";
       project.style.opacity = ".7";
       break;
+    case 4:
+      project.style.transform = "translateX(310%) scale(1)";
+      project.style.opacity = "1";
+      break;
+    case 5:
+      project.style.transform = "translateX(410%) scale(0.9)";
+      project.style.opacity = ".7";
+      break;
+    case 6:
+      project.style.transform = "translateX(510%) scale(.9)";
+      project.style.opacity = ".7";
+      break;
   }
 
   project.addEventListener("click", () => handleProjectClick(projectID));
 });
-
 
 // TODO left and right project btns
