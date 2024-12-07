@@ -1,3 +1,5 @@
+const NUM_PROJECTS = 6;
+
 const headerArrowDown = () => {
   bg = document.getElementById("bg");
   // bg.classList.replace("split-bg", "black-bg");
@@ -95,16 +97,21 @@ window.addEventListener("load", () => {
 let projects = document.querySelectorAll(".project-container");
 
 const handleProjectClick = (id) => {
-  for (let i = 1; i < 7; i++) {
+  for (let i = 1; i <= NUM_PROJECTS; i++) {
     let pj = document.getElementById(`project-${i}`).parentElement;
     if (i < id) {
+      pj.removeAttribute("id");
       pj.style.transform = `translateX(-${(id - i) * 100 + 10}%) scale(.9)`;
       pj.style.opacity = ".7";
     } else if (i == id) {
+      // if(id == 1){
+      //   document.getElementById("leftArrow").classList.add("")
+      // }
       pj.setAttribute("id", "current");
       pj.style.transform = `translateX(0%) scale(1)`;
       pj.style.opacity = "1";
     } else if (i > id) {
+      pj.removeAttribute("id");
       pj.style.transform = `translateX(${(i - id) * 100 + 10}%) scale(.9)`;
       pj.style.opacity = ".7";
     }
@@ -114,34 +121,53 @@ const handleProjectClick = (id) => {
 projects.forEach((project) => {
   let projectID = Number(project.getAttribute("data-el"));
 
-  switch (projectID) {
-    case 1:
-      project.style.transform = "translateX(0%) scale(1)";
-      project.style.opacity = "1";
-      break;
-    case 2:
-      project.style.transform = "translateX(110%) scale(0.9)";
-      project.style.opacity = ".7";
-      break;
-    case 3:
-      project.style.transform = "translateX(210%) scale(.9)";
-      project.style.opacity = ".7";
-      break;
-    case 4:
-      project.style.transform = "translateX(310%) scale(1)";
-      project.style.opacity = "1";
-      break;
-    case 5:
-      project.style.transform = "translateX(410%) scale(0.9)";
-      project.style.opacity = ".7";
-      break;
-    case 6:
-      project.style.transform = "translateX(510%) scale(.9)";
-      project.style.opacity = ".7";
-      break;
+  // Calculate the initial styles
+  if (projectID === 1) {
+    project.setAttribute("id", "current");
+    project.style.transform = "translateX(0%) scale(1)";
+    project.style.opacity = "1";
+  } else {
+    let translateValue = (projectID - 1) * 100 + 10;
+
+    project.style.transform = `translateX(${translateValue}%) scale(0.9)`;
+    project.style.opacity = "0.7";
   }
 
   project.addEventListener("click", () => handleProjectClick(projectID));
 });
 
-// TODO left and right project btns
+window.addEventListener("keydown", (event) => {
+  if (event.key == "ArrowLeft") {
+    if (document.getElementById("projects").style.display != "none") {
+      // headerArrowDown();
+      let id =
+        Number(document.getElementById("current").getAttribute("data-el")) - 1;
+
+      if (id !== 0) handleProjectClick(id);
+    }
+  } else if (event.key == "ArrowRight") {
+    if (document.getElementById("projects").style.display != "none") {
+      // aboutArrowUp
+      let id =
+        Number(document.getElementById("current").getAttribute("data-el")) + 1;
+
+      if (id !== NUM_PROJECTS + 1) handleProjectClick(id);
+    }
+  }
+});
+
+// TODO 'disable' < & > buttons for 1st & 6th projs
+document.getElementById("leftArrow").addEventListener("click", (e) => {
+  if (e.target.classList.contains("disabled")) {
+    let id = Number(document.getElementById("current").getAttribute("data-el")) - 1;
+    handleProjectClick(id)
+  }
+});
+
+document.getElementById("rightArrow").addEventListener("click", (e) => {
+  if (e.target.classList.contains("disabled")) {
+    let id = Number(document.getElementById("current").getAttribute("data-el")) + 1;
+    handleProjectClick(id)
+  }
+});
+
