@@ -52,6 +52,7 @@ const aboutArrowDown = () => {
     bg.style.width = parseInt(bg.style.width) - 1 + "%";
     bg.style.height = parseInt(bg.style.height) - 1 + "%";
   }, 5);
+  
 };
 
 const projectsArrowUp = () => {
@@ -94,22 +95,31 @@ window.addEventListener("load", () => {
   }, 2500);
 });
 
-let projects = document.querySelectorAll(".project-container");
 
-const handleProjectClick = (id) => {
+// MOBILE PROJECTS
+let mobileProjects =  document.querySelector(".mobile .projects").querySelectorAll(":scope > .project-container");
+
+const handleMobileProjsClick = (id) => {
   for (let i = 1; i <= NUM_PROJECTS; i++) {
-    let pj = document.getElementById(`project-${i}`).parentElement;
+    let pj = document.getElementById(`project-m-${i}`).parentElement;
+
     if (i < id) {
       pj.removeAttribute("id");
       pj.style.transform = `translateX(-${(id - i) * 100 + 10}%) scale(.9)`;
       pj.style.opacity = ".7";
     } else if (i == id) {
-      // if(id == 1){
-      //   document.getElementById("leftArrow").classList.add("")
-      // }
-      pj.setAttribute("id", "current");
+      pj.setAttribute("id", "m-current");
       pj.style.transform = `translateX(0%) scale(1)`;
       pj.style.opacity = "1";
+
+      if(id == 1){
+        document.getElementById("leftArrow").classList.add("disabled");
+      }else if (id == 6){
+        document.getElementById("rightArrow").classList.add("disabled");
+      }else{
+        document.getElementById("leftArrow").classList.remove("disabled");
+        document.getElementById("rightArrow").classList.remove("disabled");
+      }
     } else if (i > id) {
       pj.removeAttribute("id");
       pj.style.transform = `translateX(${(i - id) * 100 + 10}%) scale(.9)`;
@@ -118,12 +128,11 @@ const handleProjectClick = (id) => {
   }
 };
 
-projects.forEach((project) => {
+mobileProjects.forEach((project) => {
   let projectID = Number(project.getAttribute("data-el"));
 
-  // Calculate the initial styles
   if (projectID === 1) {
-    project.setAttribute("id", "current");
+    project.setAttribute("id", "m-current");
     project.style.transform = "translateX(0%) scale(1)";
     project.style.opacity = "1";
   } else {
@@ -133,41 +142,48 @@ projects.forEach((project) => {
     project.style.opacity = "0.7";
   }
 
-  project.addEventListener("click", () => handleProjectClick(projectID));
+  project.addEventListener("click", () => handleMobileProjsClick(projectID));
 });
 
 window.addEventListener("keydown", (event) => {
   if (event.key == "ArrowLeft") {
     if (document.getElementById("projects").style.display != "none") {
       // headerArrowDown();
-      let id =
-        Number(document.getElementById("current").getAttribute("data-el")) - 1;
+      let id = Number(document.getElementById("m-current").getAttribute("data-el")) - 1;
 
-      if (id !== 0) handleProjectClick(id);
+      if (id !== 0) handleMobileProjsClick(id);
     }
   } else if (event.key == "ArrowRight") {
     if (document.getElementById("projects").style.display != "none") {
       // aboutArrowUp
-      let id =
-        Number(document.getElementById("current").getAttribute("data-el")) + 1;
+      let id = Number(document.getElementById("m-current").getAttribute("data-el")) + 1;
 
-      if (id !== NUM_PROJECTS + 1) handleProjectClick(id);
+      if (id !== NUM_PROJECTS + 1) handleMobileProjsClick(id);
     }
   }
 });
 
-// TODO 'disable' < & > buttons for 1st & 6th projs
 document.getElementById("leftArrow").addEventListener("click", (e) => {
-  if (e.target.classList.contains("disabled")) {
-    let id = Number(document.getElementById("current").getAttribute("data-el")) - 1;
-    handleProjectClick(id)
+  let id = Number(document.getElementById("m-current").getAttribute("data-el")) - 1;
+
+  if (id !== 0){
+    handleMobileProjsClick(id);
   }
+  // else e.target.classList.add("disabled");
 });
 
 document.getElementById("rightArrow").addEventListener("click", (e) => {
-  if (e.target.classList.contains("disabled")) {
-    let id = Number(document.getElementById("current").getAttribute("data-el")) + 1;
-    handleProjectClick(id)
+  let id = Number(document.getElementById("m-current").getAttribute("data-el")) + 1;
+
+  if (id !== NUM_PROJECTS + 1){
+    handleMobileProjsClick(id);
   }
+  // else e.target.classList.add("disabled");
 });
 
+
+// DESKTOP PROJECTS
+// let desktopProjects =  document.querySelector(".desktop .projects").querySelectorAll(":scope > .project-container");
+
+
+// TODO scroll message

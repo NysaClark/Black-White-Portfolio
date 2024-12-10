@@ -160,8 +160,6 @@ svg.white {
   text-transform: uppercase;
   position: relative;
   font-size: 4rem;
-  /* margin: 3rem 3rem 0 3rem; */
-  /* margin: 2rem 0 0; */
 
   animation: trail-in 2s forwards;
   will-change: opacity, transform, margin-left, margin-bottom;
@@ -272,86 +270,114 @@ a#contactMe:hover {
   animation: 1s ease-out 0s 1 shake;
 }
 
+/* PROJECTS */
+
 #projects {
   display: none;
   flex-direction: column;
   align-items: center;
   width: 100%;
   height: 100%;
-  justify-content: center;
+  margin-top: 3.5rem;
+  opacity: 0;
+  animation: fade-in linear 1s forwards;
+}
+#projects h1 {
+  text-align: center;
 }
 
 #projects #down {
-  margin: 1rem 0 2rem;
+  margin: 1rem 0;
   width: 20px;
   height: 20px;
   animation: bounce 2s infinite;
 }
 
 .mobile {
+  width: 100%;
+  display: none;
+}
+
+.mobile .projects {
   position: relative;
   width: 500px;
-  height: 380px;
+  height: 430px;
   max-width: 95%;
   display: flex;
   justify-content: center;
   margin: 0 auto 0;
 }
 
-.project-container {
+.mobile .project-container {
   height: 100%;
   position: absolute;
   width: 100%;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-
-  transition: all .4s ease-in-out;
+  transition: all 0.4s ease-in-out;
 }
 
-.project-container:hover {
+.mobile .project-container:hover {
   cursor: pointer;
 }
 
-.project-container#current:hover {
- cursor: default;
+.mobile .project-container#m-current:hover {
+  cursor: default;
 }
 
-.project-container > div {
+.mobile .project-container > div {
   background: white;
   padding: 0.5rem;
   border-width: 2px 8px 8px 2px;
   border-color: black;
-  border-style: solid; 
+  border-style: solid;
 }
-.project-container > div > img {
+.mobile .project-container > div > img {
   width: 100%;
 }
-.project-container > div > h3 {
+.mobile .project-container > div > h3 {
   font-size: 1.3rem;
   padding: 0.3rem;
 }
-.project-container > div > p {
+.mobile .project-container > div > p {
   padding: 0.3rem;
 }
-.project-container > div > .project-tags {
+.project-tags {
   display: flex;
   flex-wrap: wrap;
   padding: 0.3rem;
 }
+
 .project-tags .tag {
   background-color: black;
   color: white;
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
-  padding: 0.2rem .5rem;
+  padding: 0.2rem 0.5rem;
   border-radius: 5px;
   border: 2px solid white;
-  font-size: .9rem;
+  font-size: 0.9rem;
+}
+.project-links {
+  display: flex;
+  padding: 0.5rem 0.3rem;
+  column-gap: 0.5rem;
+}
+.project-links a.link {
+  text-align: center;
+  width: 100%;
+  color: black;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.5rem;
+  border: 2px solid black;
+  font-weight: bold;
 }
 
-#slideBtns{
+#slideBtns {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
@@ -359,26 +385,113 @@ a#contactMe:hover {
   column-gap: 3rem;
 }
 
-#leftArrow, #rightArrow{
-  /* margin: 1rem .5rem; */
+/* MAYBE CHANGE BTN STYLE */
+#leftArrow,
+#rightArrow {
   padding: 1rem 2rem;
   width: 2rem;
   height: 2rem;
-  /* width: 30%; */
   cursor: pointer;
-  transition: color .2s ease;
+  transition: color 0.2s ease;
 }
 
-#leftArrow.disabled{
-  color: rgb(80, 80, 80);
+#leftArrow.disabled,
+#rightArrow.disabled {
+  color: rgb(126, 126, 126);
   cursor: default;
 }
 
-
-#leftArrow:hover, #rightArrow:hover{
-  color: rgb(80, 80, 80);
+.desktop {
+  width: 90%;
+  display: flex;
+  align-items: center;
+  padding-top: 2rem;
+}
+.sidebar {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.5rem;
+  height: 100%;
+  width: 260px;
 }
 
+.sidebar .link {
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem 0.2rem;
+  background: black;
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid black;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+.sidebar .project.active {
+  background: white;
+  color: black;
+}
+.desktop .projects {
+  margin-left: 1rem;
+  display: flex;
+  width: 100%;
+  height: 60vh;
+  overflow-y: scroll;
+  flex-direction: column;
+  row-gap: 3rem;
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.desktop .projects::-webkit-scrollbar {
+  display: none;
+}
+
+.desktop .project-container > div {
+  display: flex;
+  gap: 2rem;
+  height: 55vh;
+}
+
+.desktop .project-content,
+.desktop .image-container {
+  display: flex;
+  flex: 1 1 0%;
+  justify-content: center;
+  align-self: center;
+}
+
+.desktop img {
+  display: flex;
+  flex: 1 1 0%;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  max-width: 100%;
+  height: auto;
+}
+
+.desktop .project-content {
+  flex-direction: column;
+  row-gap: 1rem;
+
+  background: white;
+  padding: 0.5rem;
+  border-width: 2px 8px 8px 2px;
+  border-color: black;
+  border-style: solid;
+}
+
+.desktop .project-content h3 {
+  font-size: 1.4rem;
+}
+
+/* TODO scroll message */
 
 @keyframes left-slide {
   100% {
@@ -517,6 +630,16 @@ a#contactMe:hover {
       margin-bottom: 0;
       margin-left: 0;
     }
+  }
+
+  .mobile {
+    display: block;
+  }
+  .projects {
+    height: 440px;
+  }
+  .desktop {
+    display: none;
   }
 }
 
