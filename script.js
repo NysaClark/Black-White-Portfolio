@@ -44,21 +44,38 @@ const aboutArrowDown = () => {
   bg.style.width = "200%";
   bg.style.height = "200%";
 
+  var modalAnimate = setInterval(() => {
+    document
+      .querySelector(".desktop")
+      .querySelector(".projects")
+      .classList.remove("modalShow");
+    
+    clearInterval(modalAnimate);
+  }, 2000);
+
   var animation = setInterval(function () {
     if (parseInt(bg.style.width) == 0) {
       document.getElementById("projects").style.display = "flex";
+
+      document
+        .querySelector(".desktop")
+        .querySelector(".projects")
+        .classList.add("modalShow");
+
       clearInterval(animation);
     }
     bg.style.width = parseInt(bg.style.width) - 1 + "%";
     bg.style.height = parseInt(bg.style.height) - 1 + "%";
   }, 5);
-  
 };
 
 const projectsArrowUp = () => {
   bg = document.getElementById("bg");
   document.getElementById("projects").style.display = "none";
-
+  document
+    .querySelector(".desktop")
+    .querySelector(".projects")
+    .classList.add("modalShow");
   bg.style.width = "0%";
   bg.style.height = "0%";
 
@@ -95,9 +112,10 @@ window.addEventListener("load", () => {
   }, 2500);
 });
 
-
 // MOBILE PROJECTS
-let mobileProjects =  document.querySelector(".mobile .projects").querySelectorAll(":scope > .project-container");
+let mobileProjects = document
+  .querySelector(".mobile .projects")
+  .querySelectorAll(".project-container");
 
 const handleMobileProjsClick = (id) => {
   for (let i = 1; i <= NUM_PROJECTS; i++) {
@@ -112,11 +130,11 @@ const handleMobileProjsClick = (id) => {
       pj.style.transform = `translateX(0%) scale(1)`;
       pj.style.opacity = "1";
 
-      if(id == 1){
+      if (id == 1) {
         document.getElementById("leftArrow").classList.add("disabled");
-      }else if (id == 6){
+      } else if (id == 6) {
         document.getElementById("rightArrow").classList.add("disabled");
-      }else{
+      } else {
         document.getElementById("leftArrow").classList.remove("disabled");
         document.getElementById("rightArrow").classList.remove("disabled");
       }
@@ -149,14 +167,18 @@ window.addEventListener("keydown", (event) => {
   if (event.key == "ArrowLeft") {
     if (document.getElementById("projects").style.display != "none") {
       // headerArrowDown();
-      let id = Number(document.getElementById("m-current").getAttribute("data-el")) - 1;
+      let id =
+        Number(document.getElementById("m-current").getAttribute("data-el")) -
+        1;
 
       if (id !== 0) handleMobileProjsClick(id);
     }
   } else if (event.key == "ArrowRight") {
     if (document.getElementById("projects").style.display != "none") {
       // aboutArrowUp
-      let id = Number(document.getElementById("m-current").getAttribute("data-el")) + 1;
+      let id =
+        Number(document.getElementById("m-current").getAttribute("data-el")) +
+        1;
 
       if (id !== NUM_PROJECTS + 1) handleMobileProjsClick(id);
     }
@@ -164,26 +186,21 @@ window.addEventListener("keydown", (event) => {
 });
 
 document.getElementById("leftArrow").addEventListener("click", (e) => {
-  let id = Number(document.getElementById("m-current").getAttribute("data-el")) - 1;
+  let id =
+    Number(document.getElementById("m-current").getAttribute("data-el")) - 1;
 
-  if (id !== 0){
+  if (id !== 0) {
     handleMobileProjsClick(id);
   }
   // else e.target.classList.add("disabled");
 });
 
 document.getElementById("rightArrow").addEventListener("click", (e) => {
-  let id = Number(document.getElementById("m-current").getAttribute("data-el")) + 1;
+  let id =
+    Number(document.getElementById("m-current").getAttribute("data-el")) + 1;
 
-  if (id !== NUM_PROJECTS + 1){
+  if (id !== NUM_PROJECTS + 1) {
     handleMobileProjsClick(id);
   }
   // else e.target.classList.add("disabled");
 });
-
-
-// DESKTOP PROJECTS
-// let desktopProjects =  document.querySelector(".desktop .projects").querySelectorAll(":scope > .project-container");
-
-
-// TODO scroll message
