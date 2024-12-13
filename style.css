@@ -334,7 +334,7 @@ a#contactMe:hover {
   border-color: black;
   border-style: solid;
 }
-.mobile .project-container > div > img {
+.mobile .project-container > div img {
   width: 100%;
 }
 .mobile .project-container > div > h3 {
@@ -376,10 +376,10 @@ a#contactMe:hover {
   padding: 0.5rem;
   border: 2px solid black;
   font-weight: bold;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
-.project-links a.link:hover{
+.project-links a.link:hover {
   background: black;
   color: white;
 }
@@ -436,10 +436,10 @@ a#contactMe:hover {
   border: 2px solid black;
   font-weight: bold;
   font-size: 1.1rem;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 }
 
-.sidebar .link:hover{
+.sidebar .link:hover {
   background: white;
   color: black;
 }
@@ -475,7 +475,7 @@ a#contactMe:hover {
   justify-content: center;
   align-items: center;
   transition: height 1.5s ease;
-  transition-delay: .5s;
+  transition-delay: 0.5s;
 }
 
 .desktop .projects.modalShow .modal {
@@ -527,8 +527,8 @@ a#contactMe:hover {
 }
 
 .project-content .project-title,
-.project-content .project-desc{
-  padding-left: .5rem;
+.project-content .project-desc {
+  padding-left: 0.5rem;
 }
 
 .desktop .project-content h3 {
@@ -676,11 +676,6 @@ a#contactMe:hover {
     }
   }
 
-  #projects {
-    justify-content: start;
-    margin-top: 3.5rem;
-  }
-
   .mobile {
     display: block;
   }
@@ -709,7 +704,7 @@ a#contactMe:hover {
   }
 }
 
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 640px) {
   #header {
     flex-direction: column;
     align-items: center;
@@ -733,11 +728,6 @@ a#contactMe:hover {
     height: 10vh;
   }
 
-  #aboutMe {
-    justify-content: start;
-    margin-top: 5rem;
-  }
-
   #aboutMe h1 {
     font-size: 2.5rem;
   }
@@ -752,5 +742,60 @@ a#contactMe:hover {
 
   .contactBtns a {
     font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  #projects {
+    justify-content: start;
+    margin-top: 5rem;
+  }
+
+  .mobile {
+    position: relative;
+  }
+
+  .mobile .projects {
+    height: 470px;
+    width: 80vw;
+  }
+
+  .mobile .project-container picture {
+    display: flex;
+    justify-content: center;
+  }
+
+  .mobile .project-container > div img {
+    height: 150px;
+    width: auto;
+    margin-bottom: .5rem;
+  }
+
+  .mobile .project-links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .project-links a.link {
+    width: auto;
+    padding: 0.8rem 0.5rem;
+  }
+
+  .mobile #slideBtns {
+    position: absolute;
+    top: calc(50% - 2rem);
+    justify-content: space-between;
+  }
+
+  #leftArrow,
+  #rightArrow {
+    padding: 0.5rem 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #aboutMe {
+    justify-content: start;
+    margin-top: 5rem;
   }
 }

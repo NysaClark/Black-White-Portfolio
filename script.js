@@ -2,7 +2,6 @@ const NUM_PROJECTS = 6;
 
 const headerArrowDown = () => {
   bg = document.getElementById("bg");
-  // bg.classList.replace("split-bg", "black-bg");
   document.getElementById("header").style.display = "none";
 
   bg.style.width = "100%";
