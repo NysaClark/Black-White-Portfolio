@@ -796,6 +796,6 @@ a#contactMe:hover {
 @media screen and (max-width: 425px) {
   #aboutMe {
     justify-content: start;
-    margin-top: 5rem;
+    margin-top: 8rem;
   }
 }
